@@ -1,0 +1,31 @@
+参考文档：
+https://docs.jboss.org/hibernate/validator/6.0/reference/en-US/html_single/#_updating_hibernate_validator_in_wildfly
+https://www.cnblogs.com/albert1024/articles/8434741.html
+http://orika-mapper.github.io/orika-docs/index.html
+http://orika-mapper.github.io/orika-docs/intro.html
+
+背景描述：
+1.通过spring-cloud-gateway搭建中台网关业务
+2.使用2.1版本
+3.网关路由路由数据由用户录入
+4.问题：
+  网关中某一路由数据如果出现错误，将导致网关启动失败或者挂起。
+5.解决
+  a.在录入端加强校验力度，对所有数据与网关进行1v1的校验，可以适当加强扩展；
+  b.在网关中，对网关源码进行修改，将路由错误影响粒度降级；
+  c.添加网关无响应或者错误响应报警。
+
+
+
+校验工具说明：
+1.将spring-cloud-gateway 2.1版本中的过滤器和断言校验部分进行迁移-完成
+2.注解校验-完成
+  a.将过滤器或者断言的内容部分传入；
+  b.通过标识获取过滤器或者断言config；
+  c.通过shortcut思想，将数据解析到map中；
+  d.将map中对象绑定到config对象中；
+  e.根据config注解进行校验数据完整性。
+3.后续：
+  a.仅通过config注解校验数据完整性比较单一，对于数据的合法性、完整性校验欠缺，后续需要进一步衍生校验；
+  b.衍生校验，可以通过扩展注解，或者其他方式来实现。
+
