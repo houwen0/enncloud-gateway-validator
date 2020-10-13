@@ -24,7 +24,7 @@
         <validation.version>6.0.17.Final</validation.version>
         <glassfish.version>3.0.0</glassfish.version>
         <orika.version>1.5.4</orika.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
     <dependencies>
         <dependency>
